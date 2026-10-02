@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.K.H. Mung Yan Primary School - P.4 Dictation 1 (Unit 1)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f7ff;
+            background-image: radial-gradient(#e0f2fe 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+        
+        .font-kids {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+
+        /* Gold/Amber Hint Badge Styling */
+        .slot-hint {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            color: #b45309;
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 3px rgba(245, 158, 11, 0.3); }
+            100% { box-shadow: 0 0 8px rgba(245, 158, 11, 0.7); }
+        }
+
+        /* Slot Box Styles */
+        .slot-box {
+            width: 2.2rem;
+            height: 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .slot-empty {
+            background-color: #f3f4f6;
+            border: 2px dashed #cbd5e1;
+            color: #94a3b8;
+        }
+
+        .slot-filled {
+            background-color: #eff6ff;
+            border: 2px solid #3b82f6;
+            color: #1d4ed8;
+        }
+
+        .slot-correct {
+            background-color: #dcfce7 !important;
+            border: 2px solid #22c55e !important;
+            color: #15803d !important;
+        }
+
+        .slot-incorrect {
+            background-color: #fee2e2 !important;
+            border: 2px solid #ef4444 !important;
+            color: #b91c1c !important;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-28">
+
+    <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-500 text-white shadow-lg sticky top-0 z-30">
+        <div class="max-w-5xl mx-auto px-4 py-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 text-2xl font-bold shadow-inner flex-shrink-0">
+                    <i class="fa-solid font-kids text-2xl">🏫</i>
+                </div>
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-sky-200 bg-blue-800/40 px-2.5 py-0.5 rounded-full border border-sky-300/30">
+                        Primary 4 English Dictation
+                    </span>
+                    <h1 class="text-xl sm:text-2xl font-bold font-kids tracking-wide mt-0.5">
+                        S.K.H. Mung Yan Primary School
+                    </h1>
+                    <p class="text-xs text-blue-100 flex items-center gap-2 mt-0.5">
+                        <span><i class="fa-regular fa-bookmark"></i> Unit 1 Dictation</span>
+                        <span>•</span>
+                        <span><i class="fa-regular fa-calendar"></i> Date: 8th October, 2026</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Teacher Avatar & Scaffolding Badge -->
+            <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-2.5 rounded-2xl border border-white/20 self-stretch md:self-auto justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 bg-amber-300 rounded-full flex items-center justify-center text-amber-900 font-bold text-lg shadow">
+                        👩🏻‍🏫
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs font-bold text-amber-200 uppercase tracking-wide">Scaffolding Mode 💡</p>
+                        <p class="text-xs text-blue-50">1 hint letter given per word!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-6 space-y-8">
+
+        <!-- Speech Settings & Tips Banner -->
+        <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 shadow-sm flex flex-col md:flex-row items-md-center justify-between gap-4">
+            <div class="flex items-start gap-3">
+                <div class="p-2 bg-amber-400 text-white rounded-xl mt-0.5 shadow-sm">
+                    <i class="fa-solid fa-lightbulb text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="font-bold text-amber-900 text-base font-kids">Teacher Miss Lee's Encouragement 🌟</h2>
+                    <p class="text-xs sm:text-sm text-amber-800 mt-0.5">
+                        Don't worry if spelling feels tricky! Look at the <span class="bg-amber-200 px-1.5 py-0.5 rounded font-bold text-amber-900 border border-amber-400">gold hint letters 💡</span> to guide you. Click the speaker buttons to listen carefully!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Audio Control Speed Slider -->
+            <div class="flex items-center gap-3 bg-white px-3 py-2 rounded-xl border border-amber-200 self-start md:self-center shadow-xs">
+                <i class="fa-solid fa-gauge-high text-blue-500"></i>
+                <label for="speedSelect" class="text-xs font-semibold text-gray-600 whitespace-nowrap">Voice Speed:</label>
+                <select id="speedSelect" class="text-xs bg-gray-50 border border-gray-300 text-gray-800 rounded-lg p-1.5 font-medium focus:ring-2 focus:ring-blue-500 outline-none">
+                    <option value="0.7">0.7x (Very Slow 🐢)</option>
+                    <option value="0.85" selected>0.85x (Dictation Speed 🎧)</option>
+                    <option value="1.0">1.0x (Normal Speed ⚡)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- PART A: VOCABULARY -->
+        <section class="bg-white rounded-3xl p-5 sm:p-7 shadow-md border border-slate-100">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-6 border-b border-slate-100 gap-2">
+                <div>
+                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Part A</span>
+                    <h2 class="text-xl sm:text-2xl font-bold font-kids text-slate-800 mt-1">
+                        Vocabulary Phrases <span class="text-sm font-normal text-slate-500">(10 Items)</span>
+                    </h2>
+                </div>
+                <button onclick="playAllPartA()" class="inline-flex items-center gap-2 bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold text-xs sm:text-sm px-4 py-2 rounded-xl border border-blue-200 transition-all active:scale-95 self-start sm:self-auto">
+                    <i class="fa-solid fa-play"></i> Listen to All Part A
+                </button>
+            </div>
+
+            <div id="partAContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Part A Items will be generated here dynamically -->
+            </div>
+        </section>
+
+        <!-- PART B: PARAGRAPH -->
+        <section class="bg-white rounded-3xl p-5 sm:p-7 shadow-md border border-slate-100">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-6 border-b border-slate-100 gap-2">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Part B</span>
+                    <h2 class="text-xl sm:text-2xl font-bold font-kids text-slate-800 mt-1">
+                        Paragraph Dictation <span class="text-sm font-normal text-slate-500">(20 Blanks)</span>
+                    </h2>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="playFullParagraph()" class="inline-flex items-center gap-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold text-xs sm:text-sm px-4 py-2 rounded-xl border border-indigo-200 transition-all active:scale-95">
+                        <i class="fa-solid fa-volume-high"></i> Listen to Full Paragraph
+                    </button>
+                </div>
+            </div>
+
+            <p class="text-xs text-slate-500 mb-4 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <i class="fa-solid fa-circle-info text-blue-500 mr-1"></i>
+                Fill in the 20 missing blank words below. Each blank shows the letter slots and <span class="text-amber-700 font-bold">1 gold hint letter 💡</span>. Click <i class="fa-solid fa-volume-low text-indigo-600"></i> beside each sentence to re-listen!
+            </p>
+
+            <div id="partBContainer" class="space-y-6 leading-relaxed text-base sm:text-lg">
+                <!-- Part B Paragraph sentences with blanks will be rendered here -->
+            </div>
+        </section>
+
+        <!-- ANSWER KEY SECTION (Hidden by default) -->
+        <section id="answerKeyContainer" class="hidden bg-emerald-50 rounded-3xl p-6 border-2 border-emerald-300 transition-all">
+            <div class="flex items-center justify-between mb-4 border-b border-emerald-200 pb-3">
+                <h3 class="text-lg font-bold text-emerald-900 font-kids flex items-center gap-2">
+                    <i class="fa-solid fa-key text-emerald-600"></i> Reference Answer Key (參考答案)
+                </h3>
+                <button onclick="toggleAnswerKey()" class="text-xs bg-emerald-200 text-emerald-800 hover:bg-emerald-300 font-bold px-3 py-1 rounded-lg">
+                    Hide Answer Key
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div>
+                    <h4 class="font-bold text-emerald-800 mb-2 underline">Part A: Vocabulary Items</h4>
+                    <ol id="answerKeyPartA" class="list-decimal list-inside space-y-1 text-emerald-950 font-medium">
+                        <!-- Populated by JS -->
+                    </ol>
+                </div>
+                <div>
+                    <h4 class="font-bold text-emerald-800 mb-2 underline">Part B: Full Paragraph Text</h4>
+                    <div id="answerKeyPartB" class="space-y-2 text-emerald-950 font-medium leading-relaxed">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FLOATING ACTION TOOLBAR -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-2xl py-3.5 px-4 z-40">
+        <div class="max-w-5xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+            
+            <div class="flex items-center gap-2">
+                <!-- Reshuffle Button -->
+                <button onclick="reshuffleDictation()" title="Re-roll random blanks & hints" class="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm px-3.5 py-2.5 rounded-2xl border border-slate-300 transition-all active:scale-95">
+                    <i class="fa-solid fa-arrows-rotate text-blue-600"></i>
+                    <span class="hidden xs:inline">Redo / Reshuffle</span>
+                    <span class="xs:hidden">Reshuffle</span>
+                </button>
+
+                <!-- Toggle Answer Key -->
+                <button onclick="toggleAnswerKey()" class="inline-flex items-center gap-2 bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold text-xs sm:text-sm px-3.5 py-2.5 rounded-2xl border border-amber-300 transition-all active:scale-95">
+                    <i class="fa-regular fa-eye text-amber-600"></i>
+                    <span id="answerKeyBtnText" class="hidden sm:inline">Show Answers</span>
+                </button>
+            </div>
+
+            <!-- Submit Check Button -->
+            <button onclick="checkAnswers()" class="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-bold text-sm sm:text-base px-6 py-2.5 rounded-2xl shadow-lg shadow-green-500/30 transition-all active:scale-95">
+                <i class="fa-solid fa-check-double text-lg"></i>
+                <span>Check Answers (交卷對答案)</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- SCORE SUMMARY MODAL -->
+    <div id="scoreModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl transform scale-90 transition-transform duration-300 id-modal-box border border-slate-100 max-h-[90vh] overflow-y-auto">
+            
+            <div class="text-center">
+                <div id="modalEmoji" class="text-6xl mb-2 animate-bounce">🏆</div>
+                <h3 class="text-2xl font-bold font-kids text-slate-800" id="modalTitle">Awesome Effort!</h3>
+                <p class="text-xs text-slate-500 mt-1">S.K.H. Mung Yan Primary School • P.4 Dictation 1</p>
+
+                <!-- Star Rating Display -->
+                <div id="starContainer" class="flex items-center justify-center gap-2 text-3xl my-3 text-amber-400">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star text-slate-200"></i>
+                </div>
+
+                <!-- Final Score Card -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-4 my-4">
+                    <div class="text-xs uppercase tracking-wider font-bold text-blue-600">Your Total Score</div>
+                    <div class="text-4xl font-extrabold font-kids text-blue-900 mt-1" id="scoreValue">
+                        0 / 30
+                    </div>
+                    <div class="text-sm font-semibold text-blue-700 mt-1" id="scorePercentage">
+                        (0%)
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-blue-200/60 text-xs">
+                        <div class="bg-white/80 p-2 rounded-xl text-center">
+                            <span class="text-slate-500 block">Part A Score</span>
+                            <span class="font-bold text-slate-800 text-sm" id="partAScoreText">0 / 10</span>
+                        </div>
+                        <div class="bg-white/80 p-2 rounded-xl text-center">
+                            <span class="text-slate-500 block">Part B Score</span>
+                            <span class="font-bold text-slate-800 text-sm" id="partBScoreText">0 / 20</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher Feedback Box -->
+                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-3.5 text-left mb-6">
+                    <div class="flex items-center gap-2 font-bold text-amber-900 text-xs mb-1">
+                        <span>👩🏻‍🏫 Teacher's Feedback:</span>
+                    </div>
+                    <p id="teacherFeedback" class="text-xs sm:text-sm text-amber-800 leading-relaxed font-medium">
+                        You did a great job attempting the dictation! Keep practicing the tricky words!
+                    </p>
+                </div>
+
+                <!-- Modal Actions -->
+                <div class="flex items-center justify-center gap-3">
+                    <button onclick="closeModal()" class="w-1/2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 px-4 rounded-xl text-sm transition-all">
+                        Review Answers
+                    </button>
+                    <button onclick="closeModal(); reshuffleDictation();" class="w-1/2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl text-sm shadow-md transition-all">
+                        Try Again 🔄
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        /* ==========================================
+           DATA DEFINITIONS & STATE
+           ========================================== */
+        
+        // Part A Vocabularies (Exact 10 from P.4 syllabus)
+        const PART_A_VOCAB = [
+            "do karate",
+            "go jogging",
+            "go roller skating",
+            "go skateboarding",
+            "play the ukulele",
+            "watch a concert",
+            "watch a magic show",
+            "play Frisbee",
+            "visit a park",
+            "lost the game"
+        ];
+
+        // Part B Paragraph Sentences (Exact 7 sentences from P.4 syllabus)
+        const PART_B_SENTENCES = [
+            "We often have family days outdoors and we take Vivi out twice a week.",
+            "Yesterday, we went to a park in West Kowloon with Vivi.",
+            "Nathan and Dad paid $20 each and rented two bicycles.",
+            "They went cycling around the park.",
+            "We also signed up for a jigsaw puzzle contest and completed most of the puzzle in five minutes.",
+            "Suddenly, Vivi ran towards me and she stepped all over the puzzle pieces.",
+            "I was so upset."
+        ];
+
+        // Global State Objects
+        let partAState = []; // Stores vocabulary state with word hints
+        let partBState = []; // Stores sentences token state with blanks and word hints
+        let speechSynth = window.speechSynthesis;
+
+        /* ==========================================
+           WEB AUDIO API SOUND EFFECTS
+           ========================================== */
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new AudioCtx();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        // Play pleasant correct chime
+        function playCorrectSound() {
+            initAudio();
+            if (!audioCtx) return;
+            
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(523.25, now); // C5
+            osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.15); // E5
+            osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.3); // G5
+
+            gain.gain.setValueAtTime(0.2, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(now);
+            osc.stop(now + 0.4);
+        }
+
+        // Play subtle wrong buzzer
+        function playWrongSound() {
+            initAudio();
+            if (!audioCtx) return;
+
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(220, now); // A3
+            osc.frequency.setValueAtTime(180, now + 0.15); // Lower note
+
+            gain.gain.setValueAtTime(0.15, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(now);
+            osc.stop(now + 0.35);
+        }
+
+        // Play victory fanfare sound
+        function playFanfareSound() {
+            initAudio();
+            if (!audioCtx) return;
+
+            const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+            notes.forEach((freq, index) => {
+                const now = audioCtx.currentTime + (index * 0.12);
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(freq, now);
+
+                gain.gain.setValueAtTime(0.25, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start(now);
+                osc.stop(now + 0.35);
+            });
+        }
+
+        /* ==========================================
+           VOICE SYNTHESIS (WEB SPEECH API)
+           ========================================== */
+        function getEnglishVoice() {
+            if (!speechSynth) return null;
+            const voices = speechSynth.getVoices();
+            // Prefer US or UK native English voices
+            return voices.find(v => v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Samantha') || v.name.includes('Daniel') || v.name.includes('Karen'))) 
+                || voices.find(v => v.lang.startsWith('en')) 
+                || null;
+        }
+
+        function speakText(text) {
+            if (!speechSynth) {
+                alert("Speech synthesis is not supported in this browser.");
+                return;
+            }
+            speechSynth.cancel(); // Stop any ongoing speech
+
+            const speed = parseFloat(document.getElementById('speedSelect').value) || 0.85;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = speed;
+            utterance.pitch = 1.0;
+
+            const voice = getEnglishVoice();
+            if (voice) {
+                utterance.voice = voice;
+            }
+
+            speechSynth.speak(utterance);
+        }
+
+        function playAllPartA() {
+            const fullText = "Part A Vocabulary. " + PART_A_VOCAB.map((item, idx) => `Number ${idx + 1}. ${item}.`).join(" ");
+            speakText(fullText);
+        }
+
+        function playFullParagraph() {
+            const fullText = "Part B Paragraph. " + PART_B_SENTENCES.join(" ");
+            speakText(fullText);
+        }
+
+        /* ==========================================
+           SCAFFOLDING HINT GENERATOR
+           ========================================== */
+        
+        // Selects 1 random letter index for hint display per target word
+        function generateWordHint(cleanWord) {
+            const lettersOnly = cleanWord.replace(/[^a-zA-Z]/g, '');
+            if (lettersOnly.length === 0) return { hintIndex: -1, hintChar: '' };
+
+            // Pick a random index among valid alphabetical characters
+            const randomIndex = Math.floor(Math.random() * cleanWord.length);
+            // If picked position is not a letter, scan for first valid letter
+            let hintIndex = randomIndex;
+            if (!/[a-zA-Z]/.test(cleanWord[hintIndex])) {
+                for (let i = 0; i < cleanWord.length; i++) {
+                    if (/[a-zA-Z]/.test(cleanWord[i])) {
+                        hintIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            return {
+                hintIndex: hintIndex,
+                hintChar: cleanWord[hintIndex]
+            };
+        }
+
+        /* ==========================================
+           STATE INITIALIZATION & BLANK REROLLE
+           ========================================== */
+
+        function initDictationState() {
+            // 1. Initialize Part A
+            partAState = PART_A_VOCAB.map((phrase, phraseIdx) => {
+                const words = phrase.split(' ').map((wordStr, wordIdx) => {
+                    const cleanWord = wordStr.trim();
+                    const hintInfo = generateWordHint(cleanWord);
+                    return {
+                        originalWord: wordStr,
+                        cleanWord: cleanWord,
+                        hintIndex: hintInfo.hintIndex,
+                        hintChar: hintInfo.hintChar,
+                        userInput: ''
+                    };
+                });
+
+                return {
+                    phraseIndex: phraseIdx,
+                    fullPhrase: phrase,
+                    words: words
+                };
+            });
+
+            // 2. Initialize Part B Paragraph & Pick 20 Random Words as Blanks
+            // Step A: Collect all word tokens across all 7 sentences
+            let allTokens = [];
+            PART_B_SENTENCES.forEach((sentence, sIdx) => {
+                // Tokenize sentence into words & punctuation attached
+                const tokens = sentence.split(' ');
+                tokens.forEach((token, tIdx) => {
+                    // Extract clean word for checking (strip punctuation)
+                    const match = token.match(/^([^\w]*)([\w$]+)([^\w]*)$/);
+                    let prefix = '', cleanWord = token, suffix = '';
+                    if (match) {
+                        prefix = match[1];
+                        cleanWord = match[2];
+                        suffix = match[3];
+                    }
+
+                    const isEligibleForBlank = /[a-zA-Z]{2,}/.test(cleanWord); // Eligible if word has >=2 letters
+
+                    allTokens.push({
+                        sentenceIndex: sIdx,
+                        tokenIndex: tIdx,
+                        rawToken: token,
+                        prefix: prefix,
+                        cleanWord: cleanWord,
+                        suffix: suffix,
+                        isEligible: isEligibleForBlank,
+                        isBlank: false,
+                        hintIndex: -1,
+                        hintChar: '',
+                        userInput: ''
+                    });
+                });
+            });
+
+            // Step B: Pick exactly 20 random eligible tokens as Blanks
+            const eligibleIndices = allTokens
+                .map((tok, idx) => tok.isEligible ? idx : -1)
+                .filter(idx => idx !== -1);
+
+            // Shuffle eligible indices
+            for (let i = eligibleIndices.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [eligibleIndices[i], eligibleIndices[j]] = [eligibleIndices[j], eligibleIndices[i]];
+            }
+
+            const chosenBlankIndices = new Set(eligibleIndices.slice(0, 20));
+
+            // Step C: Assign blanks & random 1-letter hints for every single blank word
+            allTokens.forEach((tok, idx) => {
+                if (chosenBlankIndices.has(idx)) {
+                    tok.isBlank = true;
+                    const hintInfo = generateWordHint(tok.cleanWord);
+                    tok.hintIndex = hintInfo.hintIndex;
+                    tok.hintChar = hintInfo.hintChar;
+                }
+            });
+
+            // Step D: Re-group tokens by sentence
+            partBState = PART_B_SENTENCES.map((sentence, sIdx) => {
+                return {
+                    sentenceIndex: sIdx,
+                    sentenceText: sentence,
+                    tokens: allTokens.filter(tok => tok.sentenceIndex === sIdx)
+                };
+            });
+
+            // Render Answer Key Lists
+            populateAnswerKey();
+        }
+
+        /* ==========================================
+           PART A RENDERER & INTERACTION
+           ========================================== */
+
+        function renderPartA() {
+            const container = document.getElementById('partAContainer');
+            container.innerHTML = '';
+
+            partAState.forEach((item, itemIdx) => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-50 border border-slate-200 rounded-2xl p-4 shadow-sm hover:shadow-md transition-all flex flex-col justify-between";
+                card.id = `partA-card-${itemIdx}`;
+
+                // Header with audio button
+                let html = `
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="w-7 h-7 bg-blue-600 text-white font-bold text-xs rounded-lg flex items-center justify-center font-kids">
+                                ${itemIdx + 1}
+                            </span>
+                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Phrase ${itemIdx + 1}</span>
+                        </div>
+                        <button onclick="speakText('${item.fullPhrase.replace(/'/g, "\\'")}')" class="w-9 h-9 bg-white hover:bg-blue-50 text-blue-600 rounded-xl border border-slate-200 shadow-2xs flex items-center justify-center transition-transform active:scale-90" title="Listen to phrase">
+                            <i class="fa-solid fa-volume-high text-sm"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-3">
+                `;
+
+                // Render each word in phrase
+                item.words.forEach((wordObj, wordIdx) => {
+                    const inputId = `partA_inp_${itemIdx}_${wordIdx}`;
+                    const slotContainerId = `partA_slots_${itemIdx}_${wordIdx}`;
+
+                    html += `
+                        <div class="bg-white p-3 rounded-xl border border-slate-200/80">
+                            <!-- Word Slot Visual Container -->
+                            <div id="${slotContainerId}" class="flex flex-wrap gap-1.5 items-center mb-2 min-h-[2.5rem]">
+                                ${renderWordSlots(wordObj.cleanWord, wordObj.hintIndex, wordObj.userInput)}
+                            </div>
+
+                            <!-- Input Box -->
+                            <div class="relative flex items-center">
+                                <input type="text" 
+                                    id="${inputId}"
+                                    value="${wordObj.userInput}"
+                                    oninput="onPartAInput(${itemIdx}, ${wordIdx}, this.value)"
+                                    placeholder="Type word ${wordIdx + 1}..."
+                                    autocomplete="off"
+                                    autocorrect="off"
+                                    capitalize="off"
+                                    spellcheck="false"
+                                    class="w-full bg-slate-50 focus:bg-white text-slate-800 font-semibold px-3 py-2 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-sm"
+                                />
+                                <span id="status_partA_${itemIdx}_${wordIdx}" class="absolute right-3 hidden"></span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+                card.innerHTML = html;
+                container.appendChild(card);
+            });
+        }
+
+        // Helper to render letter slot chips with amber hint badge
+        function renderWordSlots(cleanWord, hintIndex, typedValue = '', isEvaluated = false, isCorrect = false) {
+            let html = '';
+            const typedChars = typedValue.split('');
+
+            for (let i = 0; i < cleanWord.length; i++) {
+                const targetChar = cleanWord[i];
+                const typedChar = typedChars[i] || '';
+                const isHint = (i === hintIndex);
+
+                let boxClass = 'slot-box ';
+                let charToShow = '_';
+
+                if (isEvaluated) {
+                    boxClass += isCorrect ? 'slot-correct' : 'slot-incorrect';
+                    charToShow = typedChar || targetChar;
+                } else if (isHint) {
+                    boxClass += 'slot-hint';
+                    charToShow = targetChar;
+                } else if (typedChar) {
+                    boxClass += 'slot-filled';
+                    charToShow = typedChar;
+                } else {
+                    boxClass += 'slot-empty';
+                    charToShow = '_';
+                }
+
+                html += `
+                    <div class="${boxClass} relative group">
+                        ${charToShow}
+                        ${isHint && !isEvaluated ? `<span class="absolute -top-1.5 -right-1 text-[9px] bg-amber-500 text-white rounded-full w-3.5 h-3.5 flex items-center justify-center font-bold">💡</span>` : ''}
+                    </div>
+                `;
+            }
+
+            return html;
+        }
+
+        function onPartAInput(phraseIdx, wordIdx, val) {
+            partAState[phraseIdx].words[wordIdx].userInput = val;
+            
+            // Live update letter slots view
+            const wordObj = partAState[phraseIdx].words[wordIdx];
+            const slotContainer = document.getElementById(`partA_slots_${phraseIdx}_${wordIdx}`);
+            if (slotContainer) {
+                slotContainer.innerHTML = renderWordSlots(wordObj.cleanWord, wordObj.hintIndex, val);
+            }
+        }
+
+        /* ==========================================
+           PART B RENDERER & INTERACTION
+           ========================================== */
+
+        function renderPartB() {
+            const container = document.getElementById('partBContainer');
+            container.innerHTML = '';
+
+            let globalBlankCounter = 0;
+
+            partBState.forEach((sentenceObj, sIdx) => {
+                const sentenceCard = document.createElement('div');
+                sentenceCard.className = "bg-slate-50 border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:border-indigo-200 transition-all";
+
+                let html = `
+                    <div class="flex items-start gap-3">
+                        <button onclick="speakText('${sentenceObj.sentenceText.replace(/'/g, "\\'")}')" class="mt-1 w-8 h-8 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform active:scale-90" title="Listen to sentence">
+                            <i class="fa-solid fa-volume-low text-xs"></i>
+                        </button>
+                        <div class="flex-1 flex flex-wrap items-baseline gap-x-2 gap-y-3 font-medium text-slate-800">
+                `;
+
+                sentenceObj.tokens.forEach((tok, tIdx) => {
+                    if (!tok.isBlank) {
+                        // Regular static word
+                        html += `<span class="inline-block my-1 text-slate-700">${tok.rawToken}</span>`;
+                    } else {
+                        // Interactive Blank Input with Scaffold Slots
+                        globalBlankCounter++;
+                        const blankNum = globalBlankCounter;
+                        const inputId = `partB_inp_${sIdx}_${tIdx}`;
+                        const slotId = `partB_slot_${sIdx}_${tIdx}`;
+
+                        html += `
+                            <span class="inline-flex flex-col items-center mx-1 my-1 align-top bg-white px-2 py-1.5 rounded-xl border border-indigo-200 shadow-2xs">
+                                <span class="text-[10px] font-bold text-indigo-500 uppercase tracking-wider mb-1 flex items-center gap-1">
+                                    <span>(${blankNum})</span>
+                                    <span>💡 Hint Slot</span>
+                                </span>
+                                
+                                <!-- Letter Slot Chips -->
+                                <span id="${slotId}" class="flex items-center gap-1 mb-1">
+                                    ${renderWordSlots(tok.cleanWord, tok.hintIndex, tok.userInput)}
+                                </span>
+
+                                <!-- Input Box -->
+                                <span class="flex items-center w-full">
+                                    ${tok.prefix ? `<span class="text-sm font-bold text-slate-500 mr-0.5">${tok.prefix}</span>` : ''}
+                                    <input type="text"
+                                        id="${inputId}"
+                                        value="${tok.userInput}"
+                                        oninput="onPartBInput(${sIdx}, ${tIdx}, this.value)"
+                                        placeholder="${blankNum}"
+                                        autocomplete="off"
+                                        autocorrect="off"
+                                        capitalize="off"
+                                        spellcheck="false"
+                                        class="w-28 sm:w-32 text-center bg-slate-50 focus:bg-white text-slate-900 font-bold px-2 py-1 rounded-md border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none text-sm transition-all"
+                                    />
+                                    ${tok.suffix ? `<span class="text-sm font-bold text-slate-500 ml-0.5">${tok.suffix}</span>` : ''}
+                                </span>
+                            </span>
+                        `;
+                    }
+                });
+
+                html += `
+                        </div>
+                    </div>
+                `;
+
+                sentenceCard.innerHTML = html;
+                container.appendChild(sentenceCard);
+            });
+        }
+
+        function onPartBInput(sIdx, tIdx, val) {
+            partBState[sIdx].tokens[tIdx].userInput = val;
+
+            // Live update letter slots view
+            const tok = partBState[sIdx].tokens[tIdx];
+            const slotContainer = document.getElementById(`partB_slot_${sIdx}_${tIdx}`);
+            if (slotContainer) {
+                slotContainer.innerHTML = renderWordSlots(tok.cleanWord, tok.hintIndex, val);
+            }
+        }
+
+        /* ==========================================
+           ANSWER KEY POPULATOR & TOGGLE
+           ========================================== */
+
+        function populateAnswerKey() {
+            // Part A Key
+            const olPartA = document.getElementById('answerKeyPartA');
+            olPartA.innerHTML = PART_A_VOCAB.map(item => `
+                <li class="py-0.5"><span class="font-bold text-emerald-900">${item}</span></li>
+            `).join('');
+
+            // Part B Key
+            const divPartB = document.getElementById('answerKeyPartB');
+            divPartB.innerHTML = PART_B_SENTENCES.map((sen, idx) => `
+                <p><span class="font-bold text-emerald-700">(${idx + 1})</span> ${sen}</p>
+            `).join('');
+        }
+
+        function toggleAnswerKey() {
+            const keySec = document.getElementById('answerKeyContainer');
+            const btnText = document.getElementById('answerKeyBtnText');
+            if (keySec.classList.contains('hidden')) {
+                keySec.classList.remove('hidden');
+                keySec.scrollIntoView({ behavior: 'smooth' });
+                if (btnText) btnText.innerText = "Hide Answers";
+            } else {
+                keySec.classList.add('hidden');
+                if (btnText) btnText.innerText = "Show Answers";
+            }
+        }
+
+        /* ==========================================
+           ANSWER CHECKING & EVALUATION LOGIC
+           ========================================== */
+
+        function normalizeStr(str) {
+            return str.trim().toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "");
+        }
+
+        function checkAnswers() {
+            let partACorrectCount = 0;
+            let partATotalWords = 0;
+
+            // 1. Grade Part A
+            partAState.forEach((phraseObj, itemIdx) => {
+                phraseObj.words.forEach((wordObj, wordIdx) => {
+                    partATotalWords++;
+                    const userClean = normalizeStr(wordObj.userInput);
+                    const targetClean = normalizeStr(wordObj.cleanWord);
+                    const isCorrect = (userClean === targetClean);
+
+                    if (isCorrect) partACorrectCount++;
+
+                    // Update UI Slot styling for evaluated state
+                    const slotContainer = document.getElementById(`partA_slots_${itemIdx}_${wordIdx}`);
+                    if (slotContainer) {
+                        slotContainer.innerHTML = renderWordSlots(wordObj.cleanWord, wordObj.hintIndex, wordObj.userInput, true, isCorrect);
+                    }
+
+                    // Update input border
+                    const inp = document.getElementById(`partA_inp_${itemIdx}_${wordIdx}`);
+                    if (inp) {
+                        if (isCorrect) {
+                            inp.className = "w-full bg-green-50 text-green-900 font-bold px-3 py-2 rounded-lg border-2 border-green-500 outline-none text-sm";
+                        } else {
+                            inp.className = "w-full bg-red-50 text-red-900 font-bold px-3 py-2 rounded-lg border-2 border-red-500 outline-none text-sm";
+                        }
+                    }
+                });
+            });
+
+            // Normalize Part A score to 10 points max (10 vocabulary phrases)
+            // If words match completely in phrase = 1 pt per phrase
+            let partAPhraseCorrect = 0;
+            partAState.forEach((phraseObj) => {
+                const phraseFullMatch = phraseObj.words.every(w => normalizeStr(w.userInput) === normalizeStr(w.cleanWord));
+                if (phraseFullMatch) partAPhraseCorrect++;
+            });
+
+            // 2. Grade Part B (20 Blanks)
+            let partBCorrectCount = 0;
+            let partBTotalBlanks = 0;
+
+            partBState.forEach((sentenceObj, sIdx) => {
+                sentenceObj.tokens.forEach((tok, tIdx) => {
+                    if (tok.isBlank) {
+                        partBTotalBlanks++;
+                        const userClean = normalizeStr(tok.userInput);
+                        const targetClean = normalizeStr(tok.cleanWord);
+                        const isCorrect = (userClean === targetClean);
+
+                        if (isCorrect) partBCorrectCount++;
+
+                        // Update Slot view
+                        const slotContainer = document.getElementById(`partB_slot_${sIdx}_${tIdx}`);
+                        if (slotContainer) {
+                            slotContainer.innerHTML = renderWordSlots(tok.cleanWord, tok.hintIndex, tok.userInput, true, isCorrect);
+                        }
+
+                        // Update Input Styling
+                        const inp = document.getElementById(`partB_inp_${sIdx}_${tIdx}`);
+                        if (inp) {
+                            if (isCorrect) {
+                                inp.className = "w-28 sm:w-32 text-center bg-green-50 text-green-900 font-bold px-2 py-1 rounded-md border-2 border-green-500 text-sm outline-none";
+                            } else {
+                                inp.className = "w-28 sm:w-32 text-center bg-red-50 text-red-900 font-bold px-2 py-1 rounded-md border-2 border-red-500 text-sm outline-none";
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Total Score calculation (10 for Part A + 20 for Part B = 30 points)
+            const totalScore = partAPhraseCorrect + partBCorrectCount;
+            const maxScore = 30;
+            const percentage = Math.round((totalScore / maxScore) * 100);
+
+            // Display Score Modal
+            showScoreModal(totalScore, maxScore, percentage, partAPhraseCorrect, partBCorrectCount);
+        }
+
+        /* ==========================================
+           SCORE MODAL & FEEDBACK
+           ========================================== */
+
+        function showScoreModal(score, maxScore, percentage, partA, partB) {
+            document.getElementById('scoreValue').innerText = `${score} / ${maxScore}`;
+            document.getElementById('scorePercentage').innerText = `(${percentage}%)`;
+            document.getElementById('partAScoreText').innerText = `${partA} / 10`;
+            document.getElementById('partBScoreText').innerText = `${partB} / 20`;
+
+            const starContainer = document.getElementById('starContainer');
+            const emojiEl = document.getElementById('modalEmoji');
+            const titleEl = document.getElementById('modalTitle');
+            const feedbackEl = document.getElementById('teacherFeedback');
+
+            let starsCount = 1;
+            let emoji = "💪";
+            let title = "Keep Trying!";
+            let feedback = "Good try! Look closely at the gold hint letters and practice typing them once more! (再接再厲！細心觀察提示字母，多加練習就可以大幅進步了！)";
+
+            if (percentage >= 90) {
+                starsCount = 5;
+                emoji = "🌟";
+                title = "Outstanding Dictation Master!";
+                feedback = "Superb job! You remembered all the vocabulary phrases and paragraph words perfectly! Miss Lee is super proud of you! (太優秀了！你完美掌握了所有詞彙與段落，老師為你感到非常自豪！)";
+                playFanfareSound();
+                triggerConfetti();
+            } else if (percentage >= 75) {
+                starsCount = 4;
+                emoji = "🎉";
+                title = "Great Job!";
+                feedback = "Wonderful work! You are almost there. Review the few missed words and try again! (做得好！你已經非常接近滿分了，把錯字複習一下就能拿滿分！)";
+                playCorrectSound();
+            } else if (percentage >= 50) {
+                starsCount = 3;
+                emoji = "👍";
+                title = "Good Progress!";
+                feedback = "Nice effort! You passed more than half. Focus on the longer words in Part B! (很好！你已經通過大半內容，再接再厲加強第二部分較長的字詞！)";
+                playCorrectSound();
+            } else if (percentage >= 30) {
+                starsCount = 2;
+                emoji = "🙂";
+                title = "Keep Practicing!";
+                feedback = "You are making progress! Listen to the audio buttons again to train your spelling! (加油！多點擊喇叭按鈕聽發音，對照提示字母練習！)";
+                playWrongSound();
+            } else {
+                playWrongSound();
+            }
+
+            // Render Stars
+            let starHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= starsCount) {
+                    starHtml += `<i class="fa-solid fa-star text-amber-400"></i>`;
+                } else {
+                    starHtml += `<i class="fa-solid fa-star text-slate-200"></i>`;
+                }
+            }
+            starContainer.innerHTML = starHtml;
+            emojiEl.innerText = emoji;
+            titleEl.innerText = title;
+            feedbackEl.innerText = feedback;
+
+            // Show Modal
+            const modal = document.getElementById('scoreModal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.children[0].classList.remove('scale-90');
+            modal.children[0].classList.add('scale-100');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('scoreModal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.children[0].classList.remove('scale-100');
+            modal.children[0].classList.add('scale-90');
+        }
+
+        function triggerConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+        }
+
+        /* ==========================================
+           RESHUFFLE / REDO LOGIC
+           ========================================== */
+
+        function reshuffleDictation() {
+            // Re-initialize state with fresh randomized blanks and fresh randomized hint letters
+            initDictationState();
+            renderPartA();
+            renderPartB();
+
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize on page load
+        window.onload = function() {
+            initDictationState();
+            renderPartA();
+            renderPartB();
+        };
+    </script>
+</body>
+</html>
